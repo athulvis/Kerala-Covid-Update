@@ -2,6 +2,7 @@ from __future__ import print_function
 import requests
 from bs4 import BeautifulSoup 
 import os.path
+import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
@@ -14,9 +15,11 @@ def authenticate():
     scopes = ['https://spreadsheets.google.com/feeds']
     #json_creds = os.getenv("GOOGLE_SHEETS_CREDS_JSON")
 
-    with open("token.json") as jsonfile:
-        creds_dict = json.load(jsonfile)
-    #creds_dict["private_key"] = creds_dict["private_key"].replace("\\\\n", "\n")
+    #with open("token.json") as jsonfile:
+        #creds_dict = json.load(jsonfile)
+    json_creds = os.getenv("SHEETS_JSON")
+
+    creds_dict = json.loads(json_creds)
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scopes)
     client = gspread.authorize(creds)
     
