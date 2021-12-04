@@ -3,7 +3,4 @@ requests
 html5lib
 gspread
 pandas
-json
-time
-datetime
 oauth2client
