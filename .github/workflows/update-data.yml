@@ -3,7 +3,7 @@ name: Update Covid-19 Data
 on:
   schedule:
     - cron: '0 17 * * *'
-    - cron: '50 20 2 12 *'
+    - cron: '40 6 4 12 *'
 
 jobs:
   build:
