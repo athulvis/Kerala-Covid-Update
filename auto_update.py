@@ -1,7 +1,6 @@
 from __future__ import print_function
 import requests
 from bs4 import BeautifulSoup 
-import os.path
 import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
