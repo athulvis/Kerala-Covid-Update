@@ -10,8 +10,6 @@ import time
 from datetime import date
 
 
-print(os.getenv("SHEETS_JSON"))
-
 def authenticate():
 
     scopes = ['https://spreadsheets.google.com/feeds']
@@ -19,7 +17,7 @@ def authenticate():
 
     #with open("token.json") as jsonfile:
         #creds_dict = json.load(jsonfile)
-    json_creds = str(os.getenv("SHEETS_JSON"))
+    json_creds = os.getenv("SHEETS_JSON")
 
     creds_dict = json.loads(json_creds)
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scopes)
