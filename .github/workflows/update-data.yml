@@ -2,9 +2,7 @@ name: Update Covid-19 Data
 
 on:
   schedule:
-    - cron: '0 17 * * *'
-  push:
-    branches: [ main ]
+    - cron: '30 15 * * *'
 
 jobs:
   build:

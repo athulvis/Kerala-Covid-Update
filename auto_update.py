@@ -13,7 +13,6 @@ from datetime import date
 def authenticate():
 
     scopes = ['https://spreadsheets.google.com/feeds']
-    #json_creds = os.getenv("GOOGLE_SHEETS_CREDS_JSON")
 
     #with open("token.json") as jsonfile:
         #creds_dict = json.load(jsonfile)
