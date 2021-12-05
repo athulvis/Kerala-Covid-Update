@@ -10,7 +10,7 @@ import time
 from datetime import date
 
 
-#print(os.getenv("SHEETS_JSON"))
+print(os.getenv("SHEETS_JSON"))
 
 def authenticate():
 
