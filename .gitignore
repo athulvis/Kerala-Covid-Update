@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 
-*.json
+token.json
+*.log
