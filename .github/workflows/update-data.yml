@@ -1,6 +1,8 @@
 name: Update Covid-19 Data
 
 on:
+  push:
+    branches: [ main ]
   schedule:
     - cron: '0 6 * * *'
 

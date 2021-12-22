@@ -8,17 +8,20 @@ import pandas as pd
 import json
 import time
 from datetime import date
+from datetime import timedelta
 
 
 def authenticate():
 
     scopes = ['https://spreadsheets.google.com/feeds']
+    
+    try:
+        json_creds = os.getenv("SHEETS_JSON")
+        creds_dict = json.loads(json_creds)
+    except:
+        with open("token.json") as jsonfile:
+            creds_dict = json.load(jsonfile)
 
-    #with open("token.json") as jsonfile:
-        #creds_dict = json.load(jsonfile)
-    json_creds = os.getenv("SHEETS_JSON")
-
-    creds_dict = json.loads(json_creds)
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scopes)
     client = gspread.authorize(creds)
     
@@ -53,9 +56,10 @@ spreadsheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1xy-YHg
 sheet = spreadsheet.sheet1  
 #rows = sheet.get_all_records()
 #print(sheet.row_values(1))
-
+today = date.today()
+yesterday = today - timedelta(days = 1)
 next_row = next_available_row(sheet)
-sheet.update_acell("A{}".format(next_row), str(date.today()))
+sheet.update_acell("A{}".format(next_row), str(yesterday))
 sheet.update_acell("B{}".format(next_row), data["Total"])
 sheet.update_acell("C{}".format(next_row), data["Thiruvananthapuram"])
 sheet.update_acell("D{}".format(next_row), data["Kollam"])
